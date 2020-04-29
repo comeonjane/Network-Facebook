@@ -1,0 +1,20 @@
+.allDialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    color: wheat;
+    
+
+}
+.Column1{
+
+    color: red;
+}
+
+.Column2{
+    color: white;
+  
+}
+
+.dialog.active{
+    color: gold;
+}
