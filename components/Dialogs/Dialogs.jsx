@@ -1,35 +1,22 @@
-import React from 'react';
+  import React from 'react';
 import s from './Dialogs.module.css';
 import DialogDefault from './DialogItem/DialogDefault';
 import MessagesDefault from './Message/MessagesDefault';
 
-const Dialogs = () => {
-    let ArrayDialogs = [
-        { id: 1, name: 'Dima' },
-        { id: 2, name: 'Lera' },
-        { id: 3, name: 'Sasha' },
-        { id: 4, name: 'Andrey' },
-        { id: 5, name: 'Max' },
-        { id: 6, name: 'Max' },
-        { id: 7, name: 'Max' },
-        { id: 8, name: 'Max' },
-    ]
-
-    let ArrayMessages = [
-        { id: 1, message: 'Hi' },
-        { id: 2, message: 'How are you there?' },
-        { id: 3, message: 'what did you eat today?' },
-        { id: 3, message: 'what did you got today?' },
-        { id: 3, message: 'what did you bought today?' },
-    ]
+const Dialogs = (props) => {
+    
 
 
-    let DialogsElements = ArrayDialogs.map
+    let DialogsElements = props.data1.dialogs.map
         (dialog => <DialogDefault name={dialog.name} id={dialog.id} />);
 
-    let MessagesElements = ArrayMessages.map
-        (message => < MessagesDefault message={message.message} />)
+    let MessagesElements = props.data1.messages.map
+        (message => < MessagesDefault message={message.message} />);
+         
+let newMessageElement=React.createRef();
 
+let addMessage=()=>{let text=newMessageElement.current.value;
+alert(text); }
     return (
         <div className={s.allDialogs} >
             <div className={s.Column1}>
@@ -39,6 +26,8 @@ const Dialogs = () => {
             </div>
             <div className={s.Column2}>
                 {MessagesElements}
+                <div><textarea ref={newMessageElement}></textarea></div>
+                <div><button onClick={addMessage}>Add message</button></div>
                 {/* < MessagesDefault message={ArrayMessages[0].message} />
                 < MessagesDefault message={ArrayMessages[1].message} />
                 < MessagesDefault message={ArrayMessages[2].message} /> */}
